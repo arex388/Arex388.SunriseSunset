@@ -9,23 +9,25 @@ namespace Arex388.SunriseSunset {
 		private HttpClient Client { get; }
 
 		public SunriseSunsetClient(
-			HttpClient client) => Client = client;
+			HttpClient client) {
+			Client = client ?? throw new ArgumentNullException(nameof(client));
+		}
 
 		public async Task<Response> GetAsync(
 			decimal latitude,
 			decimal longitude) => await GetAsync(new Request {
-			Latitude = latitude,
-			Longitude = longitude
-		});
+				Latitude = latitude,
+				Longitude = longitude
+			});
 
 		public async Task<Response> GetAsync(
 			decimal latitude,
 			decimal longitude,
 			DateTime dateOn) => await GetAsync(new Request {
-			DateOn = dateOn,
-			Latitude = latitude,
-			Longitude = longitude
-		});
+				DateOn = dateOn,
+				Latitude = latitude,
+				Longitude = longitude
+			});
 
 		public async Task<Response> GetAsync(
 			Request request) {
@@ -34,7 +36,7 @@ namespace Arex388.SunriseSunset {
 			}
 
 			var response = await GetResponseAsync(request);
-			
+
 			return JsonConvert.DeserializeObject<Response>(response);
 		}
 

@@ -8,6 +8,7 @@
     <PackageProjectUrl>https://github.com/arex388/Arex388.SunriseSunset</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arex388/Arex388.SunriseSunset</RepositoryUrl>
     <PackageTags>sunrise sunset arex388</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
