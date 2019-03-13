@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 
 namespace Arex388.SunriseSunset {
 	public sealed class SunriseSunsetClient {
+		private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings {
+			DateTimeZoneHandling = DateTimeZoneHandling.Utc
+		};
+
 		private HttpClient Client { get; }
 
 		public SunriseSunsetClient(
@@ -37,7 +41,7 @@ namespace Arex388.SunriseSunset {
 
 			var response = await GetResponseAsync(request);
 
-			return JsonConvert.DeserializeObject<Response>(response);
+			return JsonConvert.DeserializeObject<Response>(response, SerializerSettings);
 		}
 
 		private async Task<string> GetResponseAsync(
